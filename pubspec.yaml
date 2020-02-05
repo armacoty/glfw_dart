@@ -1,0 +1,6 @@
+name: glfw_dart
+
+dev_dependencies:
+  test: any
+dependencies:
+  ffi: any
