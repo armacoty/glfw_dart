@@ -409,5 +409,3 @@ class Glfw {
         .asFunction();
   }
 }
-
-Glfw glfw = new Glfw();
