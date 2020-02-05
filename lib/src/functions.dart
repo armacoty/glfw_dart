@@ -91,98 +91,323 @@ class Glfw {
   TglfwSwapBuffers_Func swapBuffers;
   TglfwSwapInterval_Func swapInterval;
 
-  Glfw (){
+  Glfw() {
     String path = "/usr/lib/x86_64-linux-gnu/libglfw.so";
     final dylib = DynamicLibrary.open(path);
 
-    this.init = dylib.lookup<NativeFunction<TglfwInit_Native>>('glfwInit').asFunction();
-    this.terminate = dylib.lookup<NativeFunction<TglfwTerminate_Native>>('glfwTerminate').asFunction();
-    this.getVersion = dylib.lookup<NativeFunction<TglfwGetVersion_Native>>('glfwGetVersion').asFunction();
-    this.getVersionString = dylib.lookup<NativeFunction<TglfwGetVersionString_Native>>('glfwGetVersionString').asFunction();
-    this.setErrorCallback = dylib.lookup<NativeFunction<TglfwSetErrorCallback_Native>>('glfwSetErrorCallback').asFunction();
-    this.getMonitors = dylib.lookup<NativeFunction<TglfwGetMonitors_Native>>('glfwGetMonitors').asFunction();
-    this.getPrimaryMonitor = dylib.lookup<NativeFunction<TglfwGetPrimaryMonitor_Native>>('glfwGetPrimaryMonitor').asFunction();
-    this.getMonitorPos = dylib.lookup<NativeFunction<TglfwGetMonitorPos_Native>>('glfwGetMonitorPos').asFunction();
-    this.getMonitorPhysicalSize = dylib.lookup<NativeFunction<TglfwGetMonitorPhysicalSize_Native>>('glfwGetMonitorPhysicalSize').asFunction();
-    this.getMonitorName = dylib.lookup<NativeFunction<TglfwGetMonitorName_Native>>('glfwGetMonitorName').asFunction();
-    this.setMonitorCallback = dylib.lookup<NativeFunction<TglfwSetMonitorCallback_Native>>('glfwSetMonitorCallback').asFunction();
-    this.getVideoModes = dylib.lookup<NativeFunction<TglfwGetVideoModes_Native>>('glfwGetVideoModes').asFunction();
-    this.getVideoMode = dylib.lookup<NativeFunction<TglfwGetVideoMode_Native>>('glfwGetVideoMode').asFunction();
-    this.setGamma = dylib.lookup<NativeFunction<TglfwSetGamma_Native>>('glfwSetGamma').asFunction();
-    this.getGammaRamp = dylib.lookup<NativeFunction<TglfwGetGammaRamp_Native>>('glfwGetGammaRamp').asFunction();
-    this.setGammaRamp = dylib.lookup<NativeFunction<TglfwSetGammaRamp_Native>>('glfwSetGammaRamp').asFunction();
-    this.defaultWindowHints = dylib.lookup<NativeFunction<TglfwDefaultWindowHints_Native>>('glfwDefaultWindowHints').asFunction();
-    this.windowHint = dylib.lookup<NativeFunction<TglfwWindowHint_Native>>('glfwWindowHint').asFunction();
-    this.createWindow = dylib.lookup<NativeFunction<TglfwCreateWindow_Native>>('glfwCreateWindow').asFunction();
-    this.destroyWindow = dylib.lookup<NativeFunction<TglfwDestroyWindow_Native>>('glfwDestroyWindow').asFunction();
-    this.windowShouldClose = dylib.lookup<NativeFunction<TglfwWindowShouldClose_Native>>('glfwWindowShouldClose').asFunction();
-    this.setWindowShouldClose = dylib.lookup<NativeFunction<TglfwSetWindowShouldClose_Native>>('glfwSetWindowShouldClose').asFunction();
-    this.setWindowTitle = dylib.lookup<NativeFunction<TglfwSetWindowTitle_Native>>('glfwSetWindowTitle').asFunction();
-    this.setWindowIcon = dylib.lookup<NativeFunction<TglfwSetWindowIcon_Native>>('glfwSetWindowIcon').asFunction();
-    this.getWindowPos = dylib.lookup<NativeFunction<TglfwGetWindowPos_Native>>('glfwGetWindowPos').asFunction();
-    this.setWindowPos = dylib.lookup<NativeFunction<TglfwSetWindowPos_Native>>('glfwSetWindowPos').asFunction();
-    this.getWindowSize = dylib.lookup<NativeFunction<TglfwGetWindowSize_Native>>('glfwGetWindowSize').asFunction();
-    this.setWindowSizeLimits = dylib.lookup<NativeFunction<TglfwSetWindowSizeLimits_Native>>('glfwSetWindowSizeLimits').asFunction();
-    this.setWindowAspectRatio = dylib.lookup<NativeFunction<TglfwSetWindowAspectRatio_Native>>('glfwSetWindowAspectRatio').asFunction();
-    this.setWindowSize = dylib.lookup<NativeFunction<TglfwSetWindowSize_Native>>('glfwSetWindowSize').asFunction();
-    this.getFramebufferSize = dylib.lookup<NativeFunction<TglfwGetFramebufferSize_Native>>('glfwGetFramebufferSize').asFunction();
-    this.getWindowFrameSize = dylib.lookup<NativeFunction<TglfwGetWindowFrameSize_Native>>('glfwGetWindowFrameSize').asFunction();
-    this.iconifyWindow = dylib.lookup<NativeFunction<TglfwIconifyWindow_Native>>('glfwIconifyWindow').asFunction();
-    this.restoreWindow = dylib.lookup<NativeFunction<TglfwRestoreWindow_Native>>('glfwRestoreWindow').asFunction();
-    this.maximizeWindow = dylib.lookup<NativeFunction<TglfwMaximizeWindow_Native>>('glfwMaximizeWindow').asFunction();
-    this.showWindow = dylib.lookup<NativeFunction<TglfwShowWindow_Native>>('glfwShowWindow').asFunction();
-    this.hideWindow = dylib.lookup<NativeFunction<TglfwHideWindow_Native>>('glfwHideWindow').asFunction();
-    this.focusWindow = dylib.lookup<NativeFunction<TglfwFocusWindow_Native>>('glfwFocusWindow').asFunction();
-    this.getWindowMonitor = dylib.lookup<NativeFunction<TglfwGetWindowMonitor_Native>>('glfwGetWindowMonitor').asFunction();
-    this.setWindowMonitor = dylib.lookup<NativeFunction<TglfwSetWindowMonitor_Native>>('glfwSetWindowMonitor').asFunction();
-    this.getWindowAttrib = dylib.lookup<NativeFunction<TglfwGetWindowAttrib_Native>>('glfwGetWindowAttrib').asFunction();
-    this.setWindowUserPointer = dylib.lookup<NativeFunction<TglfwSetWindowUserPointer_Native>>('glfwSetWindowUserPointer').asFunction();
-    this.getWindowUserPointer = dylib.lookup<NativeFunction<TglfwGetWindowUserPointer_Native>>('glfwGetWindowUserPointer').asFunction();
-    this.setWindowPosCallback = dylib.lookup<NativeFunction<TglfwSetWindowPosCallback_Native>>('glfwSetWindowPosCallback').asFunction();
-    this.setWindowSizeCallback = dylib.lookup<NativeFunction<TglfwSetWindowSizeCallback_Native>>('glfwSetWindowSizeCallback').asFunction();
-    this.setWindowCloseCallback = dylib.lookup<NativeFunction<TglfwSetWindowCloseCallback_Native>>('glfwSetWindowCloseCallback').asFunction();
-    this.setWindowRefreshCallback = dylib.lookup<NativeFunction<TglfwSetWindowRefreshCallback_Native>>('glfwSetWindowRefreshCallback').asFunction();
-    this.setWindowFocusCallback = dylib.lookup<NativeFunction<TglfwSetWindowFocusCallback_Native>>('glfwSetWindowFocusCallback').asFunction();
-    this.setWindowIconifyCallback = dylib.lookup<NativeFunction<TglfwSetWindowIconifyCallback_Native>>('glfwSetWindowIconifyCallback').asFunction();
-    this.setFramebufferSizeCallback = dylib.lookup<NativeFunction<TglfwSetFramebufferSizeCallback_Native>>('glfwSetFramebufferSizeCallback').asFunction();
-    this.pollEvents = dylib.lookup<NativeFunction<TglfwPollEvents_Native>>('glfwPollEvents').asFunction();
-    this.waitEvents = dylib.lookup<NativeFunction<TglfwWaitEvents_Native>>('glfwWaitEvents').asFunction();
-    this.waitEventsTimeout = dylib.lookup<NativeFunction<TglfwWaitEventsTimeout_Native>>('glfwWaitEventsTimeout').asFunction();
-    this.postEmptyEvent = dylib.lookup<NativeFunction<TglfwPostEmptyEvent_Native>>('glfwPostEmptyEvent').asFunction();
-    this.getInputMode = dylib.lookup<NativeFunction<TglfwGetInputMode_Native>>('glfwGetInputMode').asFunction();
-    this.setInputMode = dylib.lookup<NativeFunction<TglfwSetInputMode_Native>>('glfwSetInputMode').asFunction();
-    this.getKeyName = dylib.lookup<NativeFunction<TglfwGetKeyName_Native>>('glfwGetKeyName').asFunction();
-    this.getKey = dylib.lookup<NativeFunction<TglfwGetKey_Native>>('glfwGetKey').asFunction();
-    this.getMouseButton = dylib.lookup<NativeFunction<TglfwGetMouseButton_Native>>('glfwGetMouseButton').asFunction();
-    this.getCursorPos = dylib.lookup<NativeFunction<TglfwGetCursorPos_Native>>('glfwGetCursorPos').asFunction();
-    this.setCursorPos = dylib.lookup<NativeFunction<TglfwSetCursorPos_Native>>('glfwSetCursorPos').asFunction();
-    this.createCursor = dylib.lookup<NativeFunction<TglfwCreateCursor_Native>>('glfwCreateCursor').asFunction();
-    this.createStandardCursor = dylib.lookup<NativeFunction<TglfwCreateStandardCursor_Native>>('glfwCreateStandardCursor').asFunction();
-    this.destroyCursor = dylib.lookup<NativeFunction<TglfwDestroyCursor_Native>>('glfwDestroyCursor').asFunction();
-    this.setCursor = dylib.lookup<NativeFunction<TglfwSetCursor_Native>>('glfwSetCursor').asFunction();
-    this.setKeyCallback = dylib.lookup<NativeFunction<TglfwSetKeyCallback_Native>>('glfwSetKeyCallback').asFunction();
-    this.setCharCallback = dylib.lookup<NativeFunction<TglfwSetCharCallback_Native>>('glfwSetCharCallback').asFunction();
-    this.setCharModsCallback = dylib.lookup<NativeFunction<TglfwSetCharModsCallback_Native>>('glfwSetCharModsCallback').asFunction();
-    this.setMouseButtonCallback = dylib.lookup<NativeFunction<TglfwSetMouseButtonCallback_Native>>('glfwSetMouseButtonCallback').asFunction();
-    this.setCursorPosCallback = dylib.lookup<NativeFunction<TglfwSetCursorPosCallback_Native>>('glfwSetCursorPosCallback').asFunction();
-    this.setCursorEnterCallback = dylib.lookup<NativeFunction<TglfwSetCursorEnterCallback_Native>>('glfwSetCursorEnterCallback').asFunction();
-    this.setScrollCallback = dylib.lookup<NativeFunction<TglfwSetScrollCallback_Native>>('glfwSetScrollCallback').asFunction();
-    this.setDropCallback = dylib.lookup<NativeFunction<TglfwSetDropCallback_Native>>('glfwSetDropCallback').asFunction();
-    this.joystickPresent = dylib.lookup<NativeFunction<TglfwJoystickPresent_Native>>('glfwJoystickPresent').asFunction();
-    this.getJoystickAxes = dylib.lookup<NativeFunction<TglfwGetJoystickAxes_Native>>('glfwGetJoystickAxes').asFunction();
-    this.getJoystickButtons = dylib.lookup<NativeFunction<TglfwGetJoystickButtons_Native>>('glfwGetJoystickButtons').asFunction();
-    this.getJoystickName = dylib.lookup<NativeFunction<TglfwGetJoystickName_Native>>('glfwGetJoystickName').asFunction();
-    this.setJoystickCallback = dylib.lookup<NativeFunction<TglfwSetJoystickCallback_Native>>('glfwSetJoystickCallback').asFunction();
-    this.setClipboardString = dylib.lookup<NativeFunction<TglfwSetClipboardString_Native>>('glfwSetClipboardString').asFunction();
-    this.getClipboardString = dylib.lookup<NativeFunction<TglfwGetClipboardString_Native>>('glfwGetClipboardString').asFunction();
-    this.getTime = dylib.lookup<NativeFunction<TglfwGetTime_Native>>('glfwGetTime').asFunction();
-    this.setTime = dylib.lookup<NativeFunction<TglfwSetTime_Native>>('glfwSetTime').asFunction();
-    this.getTimerValue = dylib.lookup<NativeFunction<TglfwGetTimerValue_Native>>('glfwGetTimerValue').asFunction();
-    this.getTimerFrequency = dylib.lookup<NativeFunction<TglfwGetTimerFrequency_Native>>('glfwGetTimerFrequency').asFunction();
-    this.makeContextCurrent = dylib.lookup<NativeFunction<TglfwMakeContextCurrent_Native>>('glfwMakeContextCurrent').asFunction();
-    this.getCurrentContext = dylib.lookup<NativeFunction<TglfwGetCurrentContext_Native>>('glfwGetCurrentContext').asFunction();
-    this.swapBuffers = dylib.lookup<NativeFunction<TglfwSwapBuffers_Native>>('glfwSwapBuffers').asFunction();
-    this.swapInterval = dylib.lookup<NativeFunction<TglfwSwapInterval_Native>>('glfwSwapInterval').asFunction();
+    this.init =
+        dylib.lookup<NativeFunction<TglfwInit_Native>>('glfwInit').asFunction();
+    this.terminate = dylib
+        .lookup<NativeFunction<TglfwTerminate_Native>>('glfwTerminate')
+        .asFunction();
+    this.getVersion = dylib
+        .lookup<NativeFunction<TglfwGetVersion_Native>>('glfwGetVersion')
+        .asFunction();
+    this.getVersionString = dylib
+        .lookup<NativeFunction<TglfwGetVersionString_Native>>(
+            'glfwGetVersionString')
+        .asFunction();
+    this.setErrorCallback = dylib
+        .lookup<NativeFunction<TglfwSetErrorCallback_Native>>(
+            'glfwSetErrorCallback')
+        .asFunction();
+    this.getMonitors = dylib
+        .lookup<NativeFunction<TglfwGetMonitors_Native>>('glfwGetMonitors')
+        .asFunction();
+    this.getPrimaryMonitor = dylib
+        .lookup<NativeFunction<TglfwGetPrimaryMonitor_Native>>(
+            'glfwGetPrimaryMonitor')
+        .asFunction();
+    this.getMonitorPos = dylib
+        .lookup<NativeFunction<TglfwGetMonitorPos_Native>>('glfwGetMonitorPos')
+        .asFunction();
+    this.getMonitorPhysicalSize = dylib
+        .lookup<NativeFunction<TglfwGetMonitorPhysicalSize_Native>>(
+            'glfwGetMonitorPhysicalSize')
+        .asFunction();
+    this.getMonitorName = dylib
+        .lookup<NativeFunction<TglfwGetMonitorName_Native>>(
+            'glfwGetMonitorName')
+        .asFunction();
+    this.setMonitorCallback = dylib
+        .lookup<NativeFunction<TglfwSetMonitorCallback_Native>>(
+            'glfwSetMonitorCallback')
+        .asFunction();
+    this.getVideoModes = dylib
+        .lookup<NativeFunction<TglfwGetVideoModes_Native>>('glfwGetVideoModes')
+        .asFunction();
+    this.getVideoMode = dylib
+        .lookup<NativeFunction<TglfwGetVideoMode_Native>>('glfwGetVideoMode')
+        .asFunction();
+    this.setGamma = dylib
+        .lookup<NativeFunction<TglfwSetGamma_Native>>('glfwSetGamma')
+        .asFunction();
+    this.getGammaRamp = dylib
+        .lookup<NativeFunction<TglfwGetGammaRamp_Native>>('glfwGetGammaRamp')
+        .asFunction();
+    this.setGammaRamp = dylib
+        .lookup<NativeFunction<TglfwSetGammaRamp_Native>>('glfwSetGammaRamp')
+        .asFunction();
+    this.defaultWindowHints = dylib
+        .lookup<NativeFunction<TglfwDefaultWindowHints_Native>>(
+            'glfwDefaultWindowHints')
+        .asFunction();
+    this.windowHint = dylib
+        .lookup<NativeFunction<TglfwWindowHint_Native>>('glfwWindowHint')
+        .asFunction();
+    this.createWindow = dylib
+        .lookup<NativeFunction<TglfwCreateWindow_Native>>('glfwCreateWindow')
+        .asFunction();
+    this.destroyWindow = dylib
+        .lookup<NativeFunction<TglfwDestroyWindow_Native>>('glfwDestroyWindow')
+        .asFunction();
+    this.windowShouldClose = dylib
+        .lookup<NativeFunction<TglfwWindowShouldClose_Native>>(
+            'glfwWindowShouldClose')
+        .asFunction();
+    this.setWindowShouldClose = dylib
+        .lookup<NativeFunction<TglfwSetWindowShouldClose_Native>>(
+            'glfwSetWindowShouldClose')
+        .asFunction();
+    this.setWindowTitle = dylib
+        .lookup<NativeFunction<TglfwSetWindowTitle_Native>>(
+            'glfwSetWindowTitle')
+        .asFunction();
+    this.setWindowIcon = dylib
+        .lookup<NativeFunction<TglfwSetWindowIcon_Native>>('glfwSetWindowIcon')
+        .asFunction();
+    this.getWindowPos = dylib
+        .lookup<NativeFunction<TglfwGetWindowPos_Native>>('glfwGetWindowPos')
+        .asFunction();
+    this.setWindowPos = dylib
+        .lookup<NativeFunction<TglfwSetWindowPos_Native>>('glfwSetWindowPos')
+        .asFunction();
+    this.getWindowSize = dylib
+        .lookup<NativeFunction<TglfwGetWindowSize_Native>>('glfwGetWindowSize')
+        .asFunction();
+    this.setWindowSizeLimits = dylib
+        .lookup<NativeFunction<TglfwSetWindowSizeLimits_Native>>(
+            'glfwSetWindowSizeLimits')
+        .asFunction();
+    this.setWindowAspectRatio = dylib
+        .lookup<NativeFunction<TglfwSetWindowAspectRatio_Native>>(
+            'glfwSetWindowAspectRatio')
+        .asFunction();
+    this.setWindowSize = dylib
+        .lookup<NativeFunction<TglfwSetWindowSize_Native>>('glfwSetWindowSize')
+        .asFunction();
+    this.getFramebufferSize = dylib
+        .lookup<NativeFunction<TglfwGetFramebufferSize_Native>>(
+            'glfwGetFramebufferSize')
+        .asFunction();
+    this.getWindowFrameSize = dylib
+        .lookup<NativeFunction<TglfwGetWindowFrameSize_Native>>(
+            'glfwGetWindowFrameSize')
+        .asFunction();
+    this.iconifyWindow = dylib
+        .lookup<NativeFunction<TglfwIconifyWindow_Native>>('glfwIconifyWindow')
+        .asFunction();
+    this.restoreWindow = dylib
+        .lookup<NativeFunction<TglfwRestoreWindow_Native>>('glfwRestoreWindow')
+        .asFunction();
+    this.maximizeWindow = dylib
+        .lookup<NativeFunction<TglfwMaximizeWindow_Native>>(
+            'glfwMaximizeWindow')
+        .asFunction();
+    this.showWindow = dylib
+        .lookup<NativeFunction<TglfwShowWindow_Native>>('glfwShowWindow')
+        .asFunction();
+    this.hideWindow = dylib
+        .lookup<NativeFunction<TglfwHideWindow_Native>>('glfwHideWindow')
+        .asFunction();
+    this.focusWindow = dylib
+        .lookup<NativeFunction<TglfwFocusWindow_Native>>('glfwFocusWindow')
+        .asFunction();
+    this.getWindowMonitor = dylib
+        .lookup<NativeFunction<TglfwGetWindowMonitor_Native>>(
+            'glfwGetWindowMonitor')
+        .asFunction();
+    this.setWindowMonitor = dylib
+        .lookup<NativeFunction<TglfwSetWindowMonitor_Native>>(
+            'glfwSetWindowMonitor')
+        .asFunction();
+    this.getWindowAttrib = dylib
+        .lookup<NativeFunction<TglfwGetWindowAttrib_Native>>(
+            'glfwGetWindowAttrib')
+        .asFunction();
+    this.setWindowUserPointer = dylib
+        .lookup<NativeFunction<TglfwSetWindowUserPointer_Native>>(
+            'glfwSetWindowUserPointer')
+        .asFunction();
+    this.getWindowUserPointer = dylib
+        .lookup<NativeFunction<TglfwGetWindowUserPointer_Native>>(
+            'glfwGetWindowUserPointer')
+        .asFunction();
+    this.setWindowPosCallback = dylib
+        .lookup<NativeFunction<TglfwSetWindowPosCallback_Native>>(
+            'glfwSetWindowPosCallback')
+        .asFunction();
+    this.setWindowSizeCallback = dylib
+        .lookup<NativeFunction<TglfwSetWindowSizeCallback_Native>>(
+            'glfwSetWindowSizeCallback')
+        .asFunction();
+    this.setWindowCloseCallback = dylib
+        .lookup<NativeFunction<TglfwSetWindowCloseCallback_Native>>(
+            'glfwSetWindowCloseCallback')
+        .asFunction();
+    this.setWindowRefreshCallback = dylib
+        .lookup<NativeFunction<TglfwSetWindowRefreshCallback_Native>>(
+            'glfwSetWindowRefreshCallback')
+        .asFunction();
+    this.setWindowFocusCallback = dylib
+        .lookup<NativeFunction<TglfwSetWindowFocusCallback_Native>>(
+            'glfwSetWindowFocusCallback')
+        .asFunction();
+    this.setWindowIconifyCallback = dylib
+        .lookup<NativeFunction<TglfwSetWindowIconifyCallback_Native>>(
+            'glfwSetWindowIconifyCallback')
+        .asFunction();
+    this.setFramebufferSizeCallback = dylib
+        .lookup<NativeFunction<TglfwSetFramebufferSizeCallback_Native>>(
+            'glfwSetFramebufferSizeCallback')
+        .asFunction();
+    this.pollEvents = dylib
+        .lookup<NativeFunction<TglfwPollEvents_Native>>('glfwPollEvents')
+        .asFunction();
+    this.waitEvents = dylib
+        .lookup<NativeFunction<TglfwWaitEvents_Native>>('glfwWaitEvents')
+        .asFunction();
+    this.waitEventsTimeout = dylib
+        .lookup<NativeFunction<TglfwWaitEventsTimeout_Native>>(
+            'glfwWaitEventsTimeout')
+        .asFunction();
+    this.postEmptyEvent = dylib
+        .lookup<NativeFunction<TglfwPostEmptyEvent_Native>>(
+            'glfwPostEmptyEvent')
+        .asFunction();
+    this.getInputMode = dylib
+        .lookup<NativeFunction<TglfwGetInputMode_Native>>('glfwGetInputMode')
+        .asFunction();
+    this.setInputMode = dylib
+        .lookup<NativeFunction<TglfwSetInputMode_Native>>('glfwSetInputMode')
+        .asFunction();
+    this.getKeyName = dylib
+        .lookup<NativeFunction<TglfwGetKeyName_Native>>('glfwGetKeyName')
+        .asFunction();
+    this.getKey = dylib
+        .lookup<NativeFunction<TglfwGetKey_Native>>('glfwGetKey')
+        .asFunction();
+    this.getMouseButton = dylib
+        .lookup<NativeFunction<TglfwGetMouseButton_Native>>(
+            'glfwGetMouseButton')
+        .asFunction();
+    this.getCursorPos = dylib
+        .lookup<NativeFunction<TglfwGetCursorPos_Native>>('glfwGetCursorPos')
+        .asFunction();
+    this.setCursorPos = dylib
+        .lookup<NativeFunction<TglfwSetCursorPos_Native>>('glfwSetCursorPos')
+        .asFunction();
+    this.createCursor = dylib
+        .lookup<NativeFunction<TglfwCreateCursor_Native>>('glfwCreateCursor')
+        .asFunction();
+    this.createStandardCursor = dylib
+        .lookup<NativeFunction<TglfwCreateStandardCursor_Native>>(
+            'glfwCreateStandardCursor')
+        .asFunction();
+    this.destroyCursor = dylib
+        .lookup<NativeFunction<TglfwDestroyCursor_Native>>('glfwDestroyCursor')
+        .asFunction();
+    this.setCursor = dylib
+        .lookup<NativeFunction<TglfwSetCursor_Native>>('glfwSetCursor')
+        .asFunction();
+    this.setKeyCallback = dylib
+        .lookup<NativeFunction<TglfwSetKeyCallback_Native>>(
+            'glfwSetKeyCallback')
+        .asFunction();
+    this.setCharCallback = dylib
+        .lookup<NativeFunction<TglfwSetCharCallback_Native>>(
+            'glfwSetCharCallback')
+        .asFunction();
+    this.setCharModsCallback = dylib
+        .lookup<NativeFunction<TglfwSetCharModsCallback_Native>>(
+            'glfwSetCharModsCallback')
+        .asFunction();
+    this.setMouseButtonCallback = dylib
+        .lookup<NativeFunction<TglfwSetMouseButtonCallback_Native>>(
+            'glfwSetMouseButtonCallback')
+        .asFunction();
+    this.setCursorPosCallback = dylib
+        .lookup<NativeFunction<TglfwSetCursorPosCallback_Native>>(
+            'glfwSetCursorPosCallback')
+        .asFunction();
+    this.setCursorEnterCallback = dylib
+        .lookup<NativeFunction<TglfwSetCursorEnterCallback_Native>>(
+            'glfwSetCursorEnterCallback')
+        .asFunction();
+    this.setScrollCallback = dylib
+        .lookup<NativeFunction<TglfwSetScrollCallback_Native>>(
+            'glfwSetScrollCallback')
+        .asFunction();
+    this.setDropCallback = dylib
+        .lookup<NativeFunction<TglfwSetDropCallback_Native>>(
+            'glfwSetDropCallback')
+        .asFunction();
+    this.joystickPresent = dylib
+        .lookup<NativeFunction<TglfwJoystickPresent_Native>>(
+            'glfwJoystickPresent')
+        .asFunction();
+    this.getJoystickAxes = dylib
+        .lookup<NativeFunction<TglfwGetJoystickAxes_Native>>(
+            'glfwGetJoystickAxes')
+        .asFunction();
+    this.getJoystickButtons = dylib
+        .lookup<NativeFunction<TglfwGetJoystickButtons_Native>>(
+            'glfwGetJoystickButtons')
+        .asFunction();
+    this.getJoystickName = dylib
+        .lookup<NativeFunction<TglfwGetJoystickName_Native>>(
+            'glfwGetJoystickName')
+        .asFunction();
+    this.setJoystickCallback = dylib
+        .lookup<NativeFunction<TglfwSetJoystickCallback_Native>>(
+            'glfwSetJoystickCallback')
+        .asFunction();
+    this.setClipboardString = dylib
+        .lookup<NativeFunction<TglfwSetClipboardString_Native>>(
+            'glfwSetClipboardString')
+        .asFunction();
+    this.getClipboardString = dylib
+        .lookup<NativeFunction<TglfwGetClipboardString_Native>>(
+            'glfwGetClipboardString')
+        .asFunction();
+    this.getTime = dylib
+        .lookup<NativeFunction<TglfwGetTime_Native>>('glfwGetTime')
+        .asFunction();
+    this.setTime = dylib
+        .lookup<NativeFunction<TglfwSetTime_Native>>('glfwSetTime')
+        .asFunction();
+    this.getTimerValue = dylib
+        .lookup<NativeFunction<TglfwGetTimerValue_Native>>('glfwGetTimerValue')
+        .asFunction();
+    this.getTimerFrequency = dylib
+        .lookup<NativeFunction<TglfwGetTimerFrequency_Native>>(
+            'glfwGetTimerFrequency')
+        .asFunction();
+    this.makeContextCurrent = dylib
+        .lookup<NativeFunction<TglfwMakeContextCurrent_Native>>(
+            'glfwMakeContextCurrent')
+        .asFunction();
+    this.getCurrentContext = dylib
+        .lookup<NativeFunction<TglfwGetCurrentContext_Native>>(
+            'glfwGetCurrentContext')
+        .asFunction();
+    this.swapBuffers = dylib
+        .lookup<NativeFunction<TglfwSwapBuffers_Native>>('glfwSwapBuffers')
+        .asFunction();
+    this.swapInterval = dylib
+        .lookup<NativeFunction<TglfwSwapInterval_Native>>('glfwSwapInterval')
+        .asFunction();
   }
 }
+
 Glfw glfw = new Glfw();
