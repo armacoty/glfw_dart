@@ -1,6 +1,8 @@
 name: glfw_dart
-version: 0.0.0
-
+version: 0.0.1-dev.1
+description: dart:ffi bindings for GLFW library
+environment:
+  sdk: '>=2.0.0 <3.0.0'
 dev_dependencies:
   test: any
 dependencies:

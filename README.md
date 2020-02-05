@@ -6,3 +6,11 @@
 
 * glfw by gitlab@ext [https://pub.dev/packages/glfw](https://pub.dev/packages/glfw) (gitlab: [https://gitlab.com/ext/dart-glfw](https://gitlab.com/ext/dart-glfw))
 * google/dart-glfw [https://github.com/google/dart-glfw](https://github.com/google/dart-glfw)
+
+## Need to do
+
+* Cross platform support (Windows, Linux)
+* Custom library file support
+* Vulkan support
+* OpenGL library
+* High level api (with streams, objects)
