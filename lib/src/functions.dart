@@ -1,5 +1,6 @@
 import 'typedefs.dart';
 import 'dart:ffi';
+import 'dart:io';
 
 class Glfw {
   TglfwInit_Func init;
@@ -92,6 +93,8 @@ class Glfw {
   TglfwSwapInterval_Func swapInterval;
 
   Glfw() {
+    if(!Platform.isLinux)
+      throw Exception("Only Ubuntu Bionic 18.04 is currently supported.");
     String path = "/usr/lib/x86_64-linux-gnu/libglfw.so";
     final dylib = DynamicLibrary.open(path);
 
