@@ -12,5 +12,8 @@
 * Cross platform support (Windows, Linux)
 * Custom library file support
 * Vulkan support
-* OpenGL library
 * High level api (with streams, objects)
+
+## See also
+
+[gl_dart](https://github.com/armacoty/gl_dart)

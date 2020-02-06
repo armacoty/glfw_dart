@@ -6,7 +6,7 @@ import 'package:ffi/ffi.dart';
 import 'package:glfw_dart/glfw3.dart';
 import 'dart:ffi';
 import 'dart:io';
-// TODO: opengl
+import 'package:gl_dart/gl.dart';
 
 void main(List<String> args) {
   /* Initialize the library */
@@ -26,7 +26,7 @@ void main(List<String> args) {
   /* Loop until the user closes the window */
   while (glfw.windowShouldClose(window) == GLFW_FALSE) {
     /* Render here */
-    // glClear(GL_COLOR_BUFFER_BIT);
+    gl.clear(GL_COLOR_BUFFER_BIT);
 
     /* Swap front and back buffers */
     glfw.swapBuffers(window);
