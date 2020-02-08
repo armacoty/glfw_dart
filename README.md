@@ -37,6 +37,7 @@ __Notice #2: It is recommended to specify the path to `glfw3.dll`:__
 
 Example:
 ```
+import "dart:io";
 import "package:glfw_dart/glfw3.dart";
 void main(){
   glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null);
