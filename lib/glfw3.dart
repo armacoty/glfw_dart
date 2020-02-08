@@ -7,4 +7,4 @@ export 'src/structures.dart';
 export 'src/callback_typedefs.dart';
 export 'src/functions.dart';
 
-final Glfw glfw = new Glfw();
+Glfw glfw = new Glfw();
