@@ -2,6 +2,7 @@ import 'typedefs.dart';
 import 'dart:ffi';
 import 'dart:io';
 
+// TODO: docs
 class Glfw {
   TglfwInit_Func init;
   TglfwTerminate_Func terminate;
