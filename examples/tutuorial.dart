@@ -2,10 +2,10 @@
 From https://www.glfw.org/documentation.html
  */
 
-import 'package:ffi/ffi.dart';
-import 'package:glfw_dart/glfw3.dart';
 import 'dart:ffi';
 import 'dart:io';
+import 'package:ffi/ffi.dart';
+import 'package:glfw_dart/glfw3.dart';
 import 'package:gl_dart/gl.dart';
 
 void main(List<String> args) {
@@ -14,7 +14,7 @@ void main(List<String> args) {
 
   /* Create a windowed mode window and its OpenGL context */
   var window =
-      glfw.createWindow(600, 400, Utf8.toUtf8("Window"), nullptr, nullptr);
+      glfw.createWindow(600, 400, Utf8.toUtf8('Window'), nullptr, nullptr);
   if (window == nullptr) {
     glfw.terminate();
     exit(-1);

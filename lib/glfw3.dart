@@ -2,9 +2,9 @@ library glfw3;
 
 import 'src/functions.dart';
 
-export 'src/constants.dart';
-export 'src/structures.dart';
 export 'src/callback_typedefs.dart';
+export 'src/constants.dart';
 export 'src/functions.dart';
+export 'src/structures.dart';
 
-Glfw glfw = new Glfw();
+Glfw glfw = Glfw();

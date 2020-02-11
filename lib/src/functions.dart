@@ -92,26 +92,27 @@ class Glfw {
   TglfwSwapBuffers_Func swapBuffers;
   TglfwSwapInterval_Func swapInterval;
 
-  Glfw({String customPath = null}) {
-    String path = null;
+  Glfw({String customPath}) {
+    String path;
     if (customPath != null) {
       path = customPath;
     } else {
-      if (Platform.isLinux) path = "/usr/lib/x86_64-linux-gnu/libglfw.so";
+      if (Platform.isLinux) path = '/usr/lib/x86_64-linux-gnu/libglfw.so';
       if (Platform.isWindows) {
-        const String winPath = "glfw3.dll";
-        File dllFile = new File(winPath);
-        if(dllFile.existsSync())
+        const winPath = 'glfw3.dll';
+        var dllFile = File(winPath);
+        if (dllFile.existsSync()) {
           path = winPath;
-        else{
-          // The glfw3.dll path for windows is not specified. 
-          throw Exception("Could not find the ./glfw3.dll");
+        } else {
+          // The glfw3.dll path for windows is not specified.
+          throw Exception('Could not find the ./glfw3.dll');
         }
       }
     }
-    if (path == null)
+    if (path == null) {
       throw Exception(
-          "Platform is not currently supported. (platform = ${Platform.operatingSystemVersion})");
+          'Platform is not currently supported. (platform = ${Platform.operatingSystemVersion})');
+    }
     final dylib = DynamicLibrary.open(path);
 
     this.init =
