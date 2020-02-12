@@ -2,7 +2,15 @@ import 'typedefs.dart';
 import 'dart:ffi';
 import 'dart:io';
 
-// TODO: docs
+/// Class of binders of a dynamic library GLFW3
+/// It takes the path to the dynamic library GLFW3 as an argument `customPath`.
+/// If `customPath` is `null` and platform is linux it will open the file `/usr/lib/x86_64-linux-gnu/libglfw.so`.
+/// 
+/// Example: 
+/// 
+/// ```
+/// glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null);
+/// ```
 class Glfw {
   TglfwInit_Func init;
   TglfwTerminate_Func terminate;
