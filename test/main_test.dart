@@ -12,7 +12,7 @@ void main() {
   test('glfw version', () {
     glfw.init();
     var version = Utf8.fromUtf8(glfw.getVersionString());
-    expect(version, contains('3.2.1')); // Ubuntu bionic
+    expect(version, contains('3.2')); // Ubuntu bionic
     glfw.terminate();
   });
 }
