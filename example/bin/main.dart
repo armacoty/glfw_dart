@@ -9,6 +9,9 @@ import 'package:glfw_dart/glfw3.dart';
 import 'package:gl_dart/gl.dart';
 
 void main(List<String> args) {
+  if(Platform.isWindows)
+    glfw = Glfw(customPath: "third-party/glfw3.dll");
+
   /* Initialize the library */
   if (glfw.init() == GLFW_FALSE) exit(-1);
 
