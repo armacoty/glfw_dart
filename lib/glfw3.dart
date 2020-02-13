@@ -1,9 +1,9 @@
 /// Bindings for glfw3 library
-/// 
+///
 /// To use, import `package:glfw_dart/glfw3.dart`.
-/// 
+///
 /// Docs for glfw: [glfw.org/docs/latest/](https://www.glfw.org/docs/latest/)
-/// 
+///
 /// But it is worth considering the specifics of the FFI.
 /// Docs for FFI:
 /// * [api.dart.dev/stable/2.7.1/dart-ffi/dart-ffi-library.html](https://api.dart.dev/stable/2.7.1/dart-ffi/dart-ffi-library.html)

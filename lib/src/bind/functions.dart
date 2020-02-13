@@ -5,9 +5,9 @@ import 'dart:io';
 /// Class of binders of a dynamic library GLFW3
 /// It takes the path to the dynamic library GLFW3 as an argument `customPath`.
 /// If `customPath` is `null` and platform is linux it will open the file `/usr/lib/x86_64-linux-gnu/libglfw.so`.
-/// 
-/// Example: 
-/// 
+///
+/// Example:
+///
 /// ```
 /// glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null);
 /// ```
