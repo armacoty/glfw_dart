@@ -8,14 +8,13 @@ Add this to `pubspec.yaml`:
 
 ```
 dependencies:
-  glfw_dart:
-    git: https://github.com/armacoty/glfw_dart.git
+  glfw_dart: ^0.0.1
 ```
 
 Import it:
 
 ```
-import "package:glfw_dart/glfw3.dart";
+import 'package:glfw_dart/glfw3.dart';
 ```
 
 __Notice #1: `.\glfw3.dll` or `/usr/lib/x86_64-linux-gnu/libglfw.so` will be automatically opened.__
@@ -23,11 +22,11 @@ __Notice #1: `.\glfw3.dll` or `/usr/lib/x86_64-linux-gnu/libglfw.so` will be aut
 For manual GLFW initialization:
 
 ```
-import "package:glfw_dart/glfw3.dart";
+import 'package:glfw_dart/glfw3.dart';
 //...
 void main(){
   glfw = Glfw(
-    customPath: "<path-to-glfw3.dll-file>"
+    customPath: '<path-to-glfw3.dll-file>'
   );
   //...
 }
@@ -37,8 +36,8 @@ __Notice #2: It is recommended to specify the path to `glfw3.dll`:__
 
 Example:
 ```
-import "dart:io";
-import "package:glfw_dart/glfw3.dart";
+import 'dart:io';
+import 'package:glfw_dart/glfw3.dart';
 void main(){
   glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null);
   //...
