@@ -10,7 +10,7 @@ class JoystickButtonEvent {
 
   @override
   String toString() =>
-      "JoystickButtonEvent(joystick: $joystickId, button: $button)";
+      'JoystickButtonEvent(joystick: $joystickId, button: $button)';
 }
 
 class JoystickAxisEvent {
@@ -21,7 +21,7 @@ class JoystickAxisEvent {
 
   @override
   String toString() =>
-      "JoystickAxisEvent(joystick: $joystickId, axis: $axis, value: $value)";
+      'JoystickAxisEvent(joystick: $joystickId, axis: $axis, value: $value)';
 }
 
 class JoystickEvent {
@@ -30,34 +30,34 @@ class JoystickEvent {
   const JoystickEvent(this.id, this.name);
 
   @override
-  String toString() => "JoystickEvent(id: $id, name: $name)";
+  String toString() => 'JoystickEvent(id: $id, name: $name)';
 }
 
 class Joystick {
   final int LAST = 15;
 
   final StreamController<JoystickButtonEvent> _buttonDownController =
-      new StreamController<JoystickButtonEvent>(sync: true);
+      StreamController<JoystickButtonEvent>(sync: true);
   final StreamController<JoystickButtonEvent> _buttonUpController =
-      new StreamController<JoystickButtonEvent>(sync: true);
+      StreamController<JoystickButtonEvent>(sync: true);
   final StreamController<JoystickEvent> _connectedController =
-      new StreamController<JoystickEvent>(sync: true);
-  static final StreamController<JoystickEvent> _disconnectedController =
-      new StreamController<JoystickEvent>(sync: true);
-  static final StreamController<JoystickAxisEvent> _axisMoveController =
-      new StreamController<JoystickAxisEvent>(sync: true);
+      StreamController<JoystickEvent>(sync: true);
+  final StreamController<JoystickEvent> _disconnectedController =
+      StreamController<JoystickEvent>(sync: true);
+  final StreamController<JoystickAxisEvent> _axisMoveController =
+      StreamController<JoystickAxisEvent>(sync: true);
 
-  List<List<bool>> _buttons = List<List<bool>>.filled(16, null);
-  List<List<double>> _axis = List<List<double>>.filled(16, null);
-  List<bool> _joysticks = List<bool>.filled(16, false);
-  List<String> _names = List<String>.filled(16, null);
+  final List<List<bool>> _buttons = List<List<bool>>.filled(16, null);
+  final List<List<double>> _axis = List<List<double>>.filled(16, null);
+  final List<bool> _joysticks = List<bool>.filled(16, false);
+  final List<String> _names = List<String>.filled(16, null);
 
   void eventsPolled() {
     for (int jid = 0; jid <= LAST; jid++) {
       bool connected = (glfw.joystickPresent(jid) == GLFW_TRUE);
       if (connected && !_joysticks[jid]) {
         _names[jid] = Utf8.fromUtf8(glfw.getJoystickName(jid));
-        _connectedController.add(new JoystickEvent(jid, _names[jid]));
+        _connectedController.add(JoystickEvent(jid, _names[jid]));
         Pointer<Int32> count = allocate(count: sizeOf<Int32>());
         glfw.getJoystickButtons(jid, count);
         _buttons[jid] = List<bool>.filled(count.value, false);
@@ -65,7 +65,7 @@ class Joystick {
         _axis[jid] = List<double>.filled(count.value, 0.0);
         free(count);
       } else if (!connected && _joysticks[jid]) {
-        _disconnectedController.add(new JoystickEvent(jid, _names[jid]));
+        _disconnectedController.add(JoystickEvent(jid, _names[jid]));
         _names[jid] = null;
         _buttons[jid] = null;
         _axis[jid] = null;
@@ -79,12 +79,12 @@ class Joystick {
           // Up
           if (_buttons[jid][i] &&
               (buttonsPtr.elementAt(i).value == GLFW_RELEASE)) {
-            _buttonUpController.add(new JoystickButtonEvent(jid, i));
+            _buttonUpController.add(JoystickButtonEvent(jid, i));
           }
           // Down
           if (!_buttons[jid][i] &&
               (buttonsPtr.elementAt(i).value == GLFW_PRESS)) {
-            _buttonDownController.add(new JoystickButtonEvent(jid, i));
+            _buttonDownController.add(JoystickButtonEvent(jid, i));
           }
           _buttons[jid][i] = (buttonsPtr.elementAt(i).value == GLFW_PRESS);
         }
@@ -100,42 +100,44 @@ class Joystick {
     }
   }
 
-  Stream<JoystickButtonEvent> get onButtonUp =>
-      _buttonUpController.stream;
-  Stream<JoystickButtonEvent> get onButtonDown =>
-      _buttonDownController.stream;
+  Stream<JoystickButtonEvent> get onButtonUp => _buttonUpController.stream;
+  Stream<JoystickButtonEvent> get onButtonDown => _buttonDownController.stream;
   Stream<JoystickEvent> get onConnect => _connectedController.stream;
-  Stream<JoystickEvent> get onDisconnect =>
-      _disconnectedController.stream;
+  Stream<JoystickEvent> get onDisconnect => _disconnectedController.stream;
   Stream<JoystickAxisEvent> get onAxisMove => _axisMoveController.stream;
 
   bool isButtonPressed(int joystick, int button) {
-    if (joystick < 0 || joystick > LAST)
-      throw new InvalidJoystickIdException();
+    if (joystick < 0 || joystick > LAST) {
+      throw InvalidJoystickIdException();
+    }
     return _buttons[joystick][button];
   }
 
   int buttonsCount(int joystick) {
-    if (joystick < 0 || joystick > LAST)
-      throw new InvalidJoystickIdException();
+    if (joystick < 0 || joystick > LAST) {
+      throw InvalidJoystickIdException();
+    }
     return _buttons[joystick].length;
   }
 
   double axisPosition(int joystick, int axle) {
-    if (joystick < 0 || joystick > LAST)
-      throw new InvalidJoystickIdException();
+    if (joystick < 0 || joystick > LAST) {
+      throw InvalidJoystickIdException();
+    }
     return _axis[joystick][axle];
   }
 
-  int axisCount(int joystick){
-    if (joystick < 0 || joystick > LAST)
-      throw new InvalidJoystickIdException();
+  int axisCount(int joystick) {
+    if (joystick < 0 || joystick > LAST) {
+      throw InvalidJoystickIdException();
+    }
     return _axis[joystick].length;
   }
 
-  String getName(int joystick){
-    if (joystick < 0 || joystick > LAST)
-      throw new InvalidJoystickIdException();
+  String getName(int joystick) {
+    if (joystick < 0 || joystick > LAST) {
+      throw InvalidJoystickIdException();
+    }
     return _names[joystick];
   }
 }
