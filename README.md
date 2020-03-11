@@ -8,7 +8,7 @@ Add this to `pubspec.yaml`:
 
 ```
 dependencies:
-  glfw_dart: ^0.0.1
+  glfw_dart: ^0.1.0
 ```
 
 Import it:
