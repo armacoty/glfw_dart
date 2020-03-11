@@ -10,12 +10,12 @@
 /// * [pub.dev/packages/ffi](https://pub.dev/packages/ffi)
 library glfw3;
 
-import 'src/bind/functions.dart';
+import 'src/functions.dart';
 
-export 'src/bind/callback_typedefs.dart';
-export 'src/bind/constants.dart';
-export 'src/bind/functions.dart';
-export 'src/bind/structures.dart';
+export 'src/callback_typedefs.dart';
+export 'src/constants.dart';
+export 'src/functions.dart';
+export 'src/structures.dart';
 
 /// Global object of a class of binders of a dynamic library GLFW3
 ///
