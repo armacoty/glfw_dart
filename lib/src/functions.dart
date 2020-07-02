@@ -9,7 +9,7 @@ import 'dart:io';
 /// Example:
 ///
 /// ```
-/// glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null);
+/// glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null, vulkan: false);
 /// ```
 class Glfw {
   TglfwInit_Func init;
@@ -100,8 +100,15 @@ class Glfw {
   TglfwGetCurrentContext_Func getCurrentContext;
   TglfwSwapBuffers_Func swapBuffers;
   TglfwSwapInterval_Func swapInterval;
+//vulkan
+  TglfwVulkanSupported_Func vulkanSupported;
+  TglfwGetRequiredInstanceExtensions_Func getRequiredInstanceExtensions;
+  TglfwGetInstanceProcAddress_Func getInstanceProcAddress;
+  TglfwGetPhysicalDevicePresentationSupport_Func
+      getPhysicalDevicePresentationSupport;
+  TglfwCreateWindowSurface_Func createWindowSurface;
 
-  Glfw({String customPath}) {
+  Glfw({String customPath, bool vulkan = false}) {
     String path;
     if (customPath != null) {
       path = customPath;
@@ -436,5 +443,30 @@ class Glfw {
     this.swapInterval = dylib
         .lookup<NativeFunction<TglfwSwapInterval_Native>>('glfwSwapInterval')
         .asFunction();
+
+    if (vulkan) {
+      this.vulkanSupported = dylib
+          .lookup<NativeFunction<TglfwVulkanSupported_Native>>(
+              'glfwVulkanSupported')
+          .asFunction();
+      this.getRequiredInstanceExtensions = dylib
+          .lookup<NativeFunction<TglfwGetRequiredInstanceExtensions_Native>>(
+              'glfwGetRequiredInstanceExtensions')
+          .asFunction();
+      this.getInstanceProcAddress = dylib
+          .lookup<NativeFunction<TglfwGetInstanceProcAddress_Native>>(
+              'glfwGetInstanceProcAddress')
+          .asFunction();
+      this.getPhysicalDevicePresentationSupport = dylib
+          .lookup<
+                  NativeFunction<
+                      TglfwGetPhysicalDevicePresentationSupport_Native>>(
+              'glfwGetPhysicalDevicePresentationSupport')
+          .asFunction();
+      this.createWindowSurface = dylib
+          .lookup<NativeFunction<TglfwCreateWindowSurface_Native>>(
+              'glfwCreateWindowSurface')
+          .asFunction();
+    }
   }
 }

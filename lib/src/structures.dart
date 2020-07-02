@@ -36,3 +36,5 @@ class GLFWimage extends Struct {
   int height;
   Pointer<Uint8> pixels;
 }
+
+typedef GLFWvkproc = Void Function();

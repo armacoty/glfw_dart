@@ -392,3 +392,22 @@ typedef TglfwSwapBuffers_Native = Void Function(Pointer<GLFWwindow> window);
 typedef TglfwSwapBuffers_Func = void Function(Pointer<GLFWwindow> window);
 typedef TglfwSwapInterval_Native = Void Function(Int32 interval);
 typedef TglfwSwapInterval_Func = void Function(int interval);
+
+typedef TglfwVulkanSupported_Native = Int32 Function();
+typedef TglfwVulkanSupported_Func = int Function();
+typedef TglfwGetRequiredInstanceExtensions_Native = Pointer<Pointer<Utf8>>
+    Function(Pointer<Uint32>);
+typedef TglfwGetRequiredInstanceExtensions_Func = Pointer<Pointer<Utf8>>
+    Function(Pointer<Uint32>);
+typedef TglfwGetInstanceProcAddress_Native = Pointer<NativeFunction<GLFWvkproc>>
+    Function(Pointer<Struct>, Pointer<Utf8>);
+typedef TglfwGetInstanceProcAddress_Func = Pointer<NativeFunction<GLFWvkproc>>
+    Function(Pointer<Struct>, Pointer<Utf8>);
+typedef TglfwGetPhysicalDevicePresentationSupport_Native = Int32 Function(
+    Pointer<Struct>, Pointer<Struct>, Uint32);
+typedef TglfwGetPhysicalDevicePresentationSupport_Func = int Function(
+    Pointer<Struct>, Pointer<Struct>, int);
+typedef TglfwCreateWindowSurface_Native = Int32 Function(
+    Pointer<Struct>, Pointer<GLFWwindow>, Pointer<Struct>, Pointer<Struct>);
+typedef TglfwCreateWindowSurface_Func = int Function(
+    Pointer<Struct>, Pointer<GLFWwindow>, Pointer<Struct>, Pointer<Struct>);
