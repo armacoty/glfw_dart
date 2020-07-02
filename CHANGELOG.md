@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0] - 02.07.2020
+
+### Added
+
+- Vulkan API support.
+- `glfw_dart/glfw_dart.dart` for manual initialization of the GLFW.
+
 ## [0.1.0] - 13.02.2020
 
 ### Deleted
