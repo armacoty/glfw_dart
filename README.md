@@ -6,14 +6,14 @@
 
 Add this to `pubspec.yaml`:
 
-```
+```yaml
 dependencies:
-  glfw_dart: ^0.1.0
+  glfw_dart: ^0.2.0
 ```
 
 Import it:
 
-```
+```dart
 import 'package:glfw_dart/glfw3.dart';
 ```
 
@@ -21,28 +21,24 @@ __Notice #1: `.\glfw3.dll` or `/usr/lib/x86_64-linux-gnu/libglfw.so` will be aut
 
 For manual GLFW initialization:
 
-```
-import 'package:glfw_dart/glfw3.dart';
+```dart
+import 'package:glfw_dart/glfw_dart.dart';
+//...
+final Glfw glfw = Glfw(customPath: '<path-to-glfw3.dll-file>', vulkan: true);
 //...
 void main(){
-  glfw = Glfw(
-    customPath: '<path-to-glfw3.dll-file>'
-  );
+  glfw.init();
   //...
 }
 ```
 
 __Notice #2: It is recommended to specify the path to `glfw3.dll`:__
 
-Example:
+```dart
+glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null);
 ```
-import 'dart:io';
-import 'package:glfw_dart/glfw3.dart';
-void main(){
-  glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null);
-  //...
-}
-```
+
+__If `customPath` is `null` dynamic library will be automatically opened (see notice 1)__
 
 ## Alternatives
 
@@ -51,7 +47,6 @@ void main(){
 
 ## Need to do
 
-* Vulkan support
 * High level api (with streams, objects)
 
 ## See also
