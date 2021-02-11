@@ -1,10 +1,10 @@
 import 'dart:ffi';
 
-class GLFWmonitor extends Struct {}
+class GLFWmonitor extends Opaque {}
 
-class GLFWwindow extends Struct {}
+class GLFWwindow extends Opaque {}
 
-class GLFWcursor extends Struct {}
+class GLFWcursor extends Opaque {}
 
 class GLFWvidmode extends Struct {
   @Int32()

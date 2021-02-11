@@ -11,7 +11,7 @@ void main() {
 
   test('glfw version', () {
     glfw.init();
-    var version = Utf8.fromUtf8(glfw.getVersionString());
+    var version = glfw.getVersionString().toDartString();
     expect(version, contains('3.2')); // Ubuntu bionic
     glfw.terminate();
   });

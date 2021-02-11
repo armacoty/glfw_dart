@@ -1,6 +1,7 @@
-import 'typedefs.dart';
 import 'dart:ffi';
 import 'dart:io';
+
+import 'typedefs.dart';
 
 /// Class of binders of a dynamic library GLFW3
 /// It takes the path to the dynamic library GLFW3 as an argument `customPath`.
@@ -100,6 +101,7 @@ class Glfw {
   TglfwGetCurrentContext_Func getCurrentContext;
   TglfwSwapBuffers_Func swapBuffers;
   TglfwSwapInterval_Func swapInterval;
+
 //vulkan
   TglfwVulkanSupported_Func vulkanSupported;
   TglfwGetRequiredInstanceExtensions_Func getRequiredInstanceExtensions;
@@ -453,20 +455,17 @@ class Glfw {
           .lookup<NativeFunction<TglfwGetRequiredInstanceExtensions_Native>>(
               'glfwGetRequiredInstanceExtensions')
           .asFunction();
-      this.getInstanceProcAddress = dylib
-          .lookup<NativeFunction<TglfwGetInstanceProcAddress_Native>>(
-              'glfwGetInstanceProcAddress')
-          .asFunction();
-      this.getPhysicalDevicePresentationSupport = dylib
-          .lookup<
+      this.getInstanceProcAddress =
+          dylib.lookup<NativeFunction<TglfwGetInstanceProcAddress_Native>>(
+              'glfwGetInstanceProcAddress') as TglfwGetInstanceProcAddress_Func;
+      this.getPhysicalDevicePresentationSupport = dylib.lookup<
                   NativeFunction<
                       TglfwGetPhysicalDevicePresentationSupport_Native>>(
               'glfwGetPhysicalDevicePresentationSupport')
-          .asFunction();
-      this.createWindowSurface = dylib
-          .lookup<NativeFunction<TglfwCreateWindowSurface_Native>>(
-              'glfwCreateWindowSurface')
-          .asFunction();
+          as TglfwGetPhysicalDevicePresentationSupport_Func;
+      this.createWindowSurface =
+          dylib.lookup<NativeFunction<TglfwCreateWindowSurface_Native>>(
+              'glfwCreateWindowSurface') as TglfwCreateWindowSurface_Func;
     }
   }
 }

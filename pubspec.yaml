@@ -1,13 +1,15 @@
 name: glfw_dart
-version: 0.2.0
+version: 0.2.1
 description: dart:ffi bindings for GLFW3 library. It connects the glfw3.dll/libglfw3.so library and loads the functions of glfw3.
 homepage: https://github.com/armacoty/glfw_dart
 
 environment:
   sdk: ">=2.0.0 <3.0.0"
 dev_dependencies:
-  test: ^1.12.0
-  gl_dart: any
+  test: ^1.16.0
+  gl_dart:
+    git:
+      url: https://github.com/jld3103/gl_dart
   pedantic: any
 dependencies:
-  ffi: ^0.1.3
+  ffi: ^1.0.0
