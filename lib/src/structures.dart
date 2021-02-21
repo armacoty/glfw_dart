@@ -1,40 +1,40 @@
 import 'dart:ffi';
 
-class GLFWmonitor extends Struct {}
+class GLFWmonitor extends Opaque {}
 
-class GLFWwindow extends Struct {}
+class GLFWwindow extends Opaque {}
 
-class GLFWcursor extends Struct {}
+class GLFWcursor extends Opaque {}
 
 class GLFWvidmode extends Struct {
   @Int32()
-  int width;
+  external int width;
   @Int32()
-  int height;
+  external int height;
   @Int32()
-  int redBits;
+  external int redBits;
   @Int32()
-  int greenBits;
+  external int greenBits;
   @Int32()
-  int blueBits;
+  external int blueBits;
   @Int32()
-  int refreshRate;
+  external int refreshRate;
 }
 
 class GLFWgammaramp extends Struct {
-  Pointer<Int16> red;
-  Pointer<Int16> green;
-  Pointer<Int16> blue;
+  external Pointer<Int16> red;
+  external Pointer<Int16> green;
+  external Pointer<Int16> blue;
   @Uint32()
-  int size;
+  external int size;
 }
 
 class GLFWimage extends Struct {
   @Int32()
-  int width;
+  external int width;
   @Int32()
-  int height;
-  Pointer<Uint8> pixels;
+  external int height;
+  external Pointer<Uint8> pixels;
 }
 
 typedef GLFWvkproc = Void Function();

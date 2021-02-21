@@ -1,6 +1,7 @@
-import 'typedefs.dart';
 import 'dart:ffi';
 import 'dart:io';
+
+import 'typedefs.dart';
 
 /// Class of binders of a dynamic library GLFW3
 /// It takes the path to the dynamic library GLFW3 as an argument `customPath`.
@@ -12,104 +13,105 @@ import 'dart:io';
 /// glfw = Glfw(customPath: Platform.isWindows ? "lib\\glfw3.dll" : null, vulkan: false);
 /// ```
 class Glfw {
-  TglfwInit_Func init;
-  TglfwTerminate_Func terminate;
-  TglfwGetVersion_Func getVersion;
-  TglfwGetVersionString_Func getVersionString;
-  TglfwSetErrorCallback_Func setErrorCallback;
-  TglfwGetMonitors_Func getMonitors;
-  TglfwGetPrimaryMonitor_Func getPrimaryMonitor;
-  TglfwGetMonitorPos_Func getMonitorPos;
-  TglfwGetMonitorPhysicalSize_Func getMonitorPhysicalSize;
-  TglfwGetMonitorName_Func getMonitorName;
-  TglfwSetMonitorCallback_Func setMonitorCallback;
-  TglfwGetVideoModes_Func getVideoModes;
-  TglfwGetVideoMode_Func getVideoMode;
-  TglfwSetGamma_Func setGamma;
-  TglfwGetGammaRamp_Func getGammaRamp;
-  TglfwSetGammaRamp_Func setGammaRamp;
-  TglfwDefaultWindowHints_Func defaultWindowHints;
-  TglfwWindowHint_Func windowHint;
-  TglfwCreateWindow_Func createWindow;
-  TglfwDestroyWindow_Func destroyWindow;
-  TglfwWindowShouldClose_Func windowShouldClose;
-  TglfwSetWindowShouldClose_Func setWindowShouldClose;
-  TglfwSetWindowTitle_Func setWindowTitle;
-  TglfwSetWindowIcon_Func setWindowIcon;
-  TglfwGetWindowPos_Func getWindowPos;
-  TglfwSetWindowPos_Func setWindowPos;
-  TglfwGetWindowSize_Func getWindowSize;
-  TglfwSetWindowSizeLimits_Func setWindowSizeLimits;
-  TglfwSetWindowAspectRatio_Func setWindowAspectRatio;
-  TglfwSetWindowSize_Func setWindowSize;
-  TglfwGetFramebufferSize_Func getFramebufferSize;
-  TglfwGetWindowFrameSize_Func getWindowFrameSize;
-  TglfwIconifyWindow_Func iconifyWindow;
-  TglfwRestoreWindow_Func restoreWindow;
-  TglfwMaximizeWindow_Func maximizeWindow;
-  TglfwShowWindow_Func showWindow;
-  TglfwHideWindow_Func hideWindow;
-  TglfwFocusWindow_Func focusWindow;
-  TglfwGetWindowMonitor_Func getWindowMonitor;
-  TglfwSetWindowMonitor_Func setWindowMonitor;
-  TglfwGetWindowAttrib_Func getWindowAttrib;
-  TglfwSetWindowUserPointer_Func setWindowUserPointer;
-  TglfwGetWindowUserPointer_Func getWindowUserPointer;
-  TglfwSetWindowPosCallback_Func setWindowPosCallback;
-  TglfwSetWindowSizeCallback_Func setWindowSizeCallback;
-  TglfwSetWindowCloseCallback_Func setWindowCloseCallback;
-  TglfwSetWindowRefreshCallback_Func setWindowRefreshCallback;
-  TglfwSetWindowFocusCallback_Func setWindowFocusCallback;
-  TglfwSetWindowIconifyCallback_Func setWindowIconifyCallback;
-  TglfwSetFramebufferSizeCallback_Func setFramebufferSizeCallback;
-  TglfwPollEvents_Func pollEvents;
-  TglfwWaitEvents_Func waitEvents;
-  TglfwWaitEventsTimeout_Func waitEventsTimeout;
-  TglfwPostEmptyEvent_Func postEmptyEvent;
-  TglfwGetInputMode_Func getInputMode;
-  TglfwSetInputMode_Func setInputMode;
-  TglfwGetKeyName_Func getKeyName;
-  TglfwGetKey_Func getKey;
-  TglfwGetMouseButton_Func getMouseButton;
-  TglfwGetCursorPos_Func getCursorPos;
-  TglfwSetCursorPos_Func setCursorPos;
-  TglfwCreateCursor_Func createCursor;
-  TglfwCreateStandardCursor_Func createStandardCursor;
-  TglfwDestroyCursor_Func destroyCursor;
-  TglfwSetCursor_Func setCursor;
-  TglfwSetKeyCallback_Func setKeyCallback;
-  TglfwSetCharCallback_Func setCharCallback;
-  TglfwSetCharModsCallback_Func setCharModsCallback;
-  TglfwSetMouseButtonCallback_Func setMouseButtonCallback;
-  TglfwSetCursorPosCallback_Func setCursorPosCallback;
-  TglfwSetCursorEnterCallback_Func setCursorEnterCallback;
-  TglfwSetScrollCallback_Func setScrollCallback;
-  TglfwSetDropCallback_Func setDropCallback;
-  TglfwJoystickPresent_Func joystickPresent;
-  TglfwGetJoystickAxes_Func getJoystickAxes;
-  TglfwGetJoystickButtons_Func getJoystickButtons;
-  TglfwGetJoystickName_Func getJoystickName;
-  TglfwSetJoystickCallback_Func setJoystickCallback;
-  TglfwSetClipboardString_Func setClipboardString;
-  TglfwGetClipboardString_Func getClipboardString;
-  TglfwGetTime_Func getTime;
-  TglfwSetTime_Func setTime;
-  TglfwGetTimerValue_Func getTimerValue;
-  TglfwGetTimerFrequency_Func getTimerFrequency;
-  TglfwMakeContextCurrent_Func makeContextCurrent;
-  TglfwGetCurrentContext_Func getCurrentContext;
-  TglfwSwapBuffers_Func swapBuffers;
-  TglfwSwapInterval_Func swapInterval;
-//vulkan
-  TglfwVulkanSupported_Func vulkanSupported;
-  TglfwGetRequiredInstanceExtensions_Func getRequiredInstanceExtensions;
-  TglfwGetInstanceProcAddress_Func getInstanceProcAddress;
-  TglfwGetPhysicalDevicePresentationSupport_Func
-      getPhysicalDevicePresentationSupport;
-  TglfwCreateWindowSurface_Func createWindowSurface;
+  late TglfwInit_Func init;
+  late TglfwTerminate_Func terminate;
+  late TglfwGetVersion_Func getVersion;
+  late TglfwGetVersionString_Func getVersionString;
+  late TglfwSetErrorCallback_Func setErrorCallback;
+  late TglfwGetMonitors_Func getMonitors;
+  late TglfwGetPrimaryMonitor_Func getPrimaryMonitor;
+  late TglfwGetMonitorPos_Func getMonitorPos;
+  late TglfwGetMonitorPhysicalSize_Func getMonitorPhysicalSize;
+  late TglfwGetMonitorName_Func getMonitorName;
+  late TglfwSetMonitorCallback_Func setMonitorCallback;
+  late TglfwGetVideoModes_Func getVideoModes;
+  late TglfwGetVideoMode_Func getVideoMode;
+  late TglfwSetGamma_Func setGamma;
+  late TglfwGetGammaRamp_Func getGammaRamp;
+  late TglfwSetGammaRamp_Func setGammaRamp;
+  late TglfwDefaultWindowHints_Func defaultWindowHints;
+  late TglfwWindowHint_Func windowHint;
+  late TglfwCreateWindow_Func createWindow;
+  late TglfwDestroyWindow_Func destroyWindow;
+  late TglfwWindowShouldClose_Func windowShouldClose;
+  late TglfwSetWindowShouldClose_Func setWindowShouldClose;
+  late TglfwSetWindowTitle_Func setWindowTitle;
+  late TglfwSetWindowIcon_Func setWindowIcon;
+  late TglfwGetWindowPos_Func getWindowPos;
+  late TglfwSetWindowPos_Func setWindowPos;
+  late TglfwGetWindowSize_Func getWindowSize;
+  late TglfwSetWindowSizeLimits_Func setWindowSizeLimits;
+  late TglfwSetWindowAspectRatio_Func setWindowAspectRatio;
+  late TglfwSetWindowSize_Func setWindowSize;
+  late TglfwGetFramebufferSize_Func getFramebufferSize;
+  late TglfwGetWindowFrameSize_Func getWindowFrameSize;
+  late TglfwIconifyWindow_Func iconifyWindow;
+  late TglfwRestoreWindow_Func restoreWindow;
+  late TglfwMaximizeWindow_Func maximizeWindow;
+  late TglfwShowWindow_Func showWindow;
+  late TglfwHideWindow_Func hideWindow;
+  late TglfwFocusWindow_Func focusWindow;
+  late TglfwGetWindowMonitor_Func getWindowMonitor;
+  late TglfwSetWindowMonitor_Func setWindowMonitor;
+  late TglfwGetWindowAttrib_Func getWindowAttrib;
+  late TglfwSetWindowUserPointer_Func setWindowUserPointer;
+  late TglfwGetWindowUserPointer_Func getWindowUserPointer;
+  late TglfwSetWindowPosCallback_Func setWindowPosCallback;
+  late TglfwSetWindowSizeCallback_Func setWindowSizeCallback;
+  late TglfwSetWindowCloseCallback_Func setWindowCloseCallback;
+  late TglfwSetWindowRefreshCallback_Func setWindowRefreshCallback;
+  late TglfwSetWindowFocusCallback_Func setWindowFocusCallback;
+  late TglfwSetWindowIconifyCallback_Func setWindowIconifyCallback;
+  late TglfwSetFramebufferSizeCallback_Func setFramebufferSizeCallback;
+  late TglfwPollEvents_Func pollEvents;
+  late TglfwWaitEvents_Func waitEvents;
+  late TglfwWaitEventsTimeout_Func waitEventsTimeout;
+  late TglfwPostEmptyEvent_Func postEmptyEvent;
+  late TglfwGetInputMode_Func getInputMode;
+  late TglfwSetInputMode_Func setInputMode;
+  late TglfwGetKeyName_Func getKeyName;
+  late TglfwGetKey_Func getKey;
+  late TglfwGetMouseButton_Func getMouseButton;
+  late TglfwGetCursorPos_Func getCursorPos;
+  late TglfwSetCursorPos_Func setCursorPos;
+  late TglfwCreateCursor_Func createCursor;
+  late TglfwCreateStandardCursor_Func createStandardCursor;
+  late TglfwDestroyCursor_Func destroyCursor;
+  late TglfwSetCursor_Func setCursor;
+  late TglfwSetKeyCallback_Func setKeyCallback;
+  late TglfwSetCharCallback_Func setCharCallback;
+  late TglfwSetCharModsCallback_Func setCharModsCallback;
+  late TglfwSetMouseButtonCallback_Func setMouseButtonCallback;
+  late TglfwSetCursorPosCallback_Func setCursorPosCallback;
+  late TglfwSetCursorEnterCallback_Func setCursorEnterCallback;
+  late TglfwSetScrollCallback_Func setScrollCallback;
+  late TglfwSetDropCallback_Func setDropCallback;
+  late TglfwJoystickPresent_Func joystickPresent;
+  late TglfwGetJoystickAxes_Func getJoystickAxes;
+  late TglfwGetJoystickButtons_Func getJoystickButtons;
+  late TglfwGetJoystickName_Func getJoystickName;
+  late TglfwSetJoystickCallback_Func setJoystickCallback;
+  late TglfwSetClipboardString_Func setClipboardString;
+  late TglfwGetClipboardString_Func getClipboardString;
+  late TglfwGetTime_Func getTime;
+  late TglfwSetTime_Func setTime;
+  late TglfwGetTimerValue_Func getTimerValue;
+  late TglfwGetTimerFrequency_Func getTimerFrequency;
+  late TglfwMakeContextCurrent_Func makeContextCurrent;
+  late TglfwGetCurrentContext_Func getCurrentContext;
+  late TglfwSwapBuffers_Func swapBuffers;
+  late TglfwSwapInterval_Func swapInterval;
 
-  Glfw({String customPath, bool vulkan = false}) {
-    String path;
+//vulkan
+  late TglfwVulkanSupported_Func vulkanSupported;
+  late TglfwGetRequiredInstanceExtensions_Func getRequiredInstanceExtensions;
+  late TglfwGetInstanceProcAddress_Func getInstanceProcAddress;
+  late TglfwGetPhysicalDevicePresentationSupport_Func
+      getPhysicalDevicePresentationSupport;
+  late TglfwCreateWindowSurface_Func createWindowSurface;
+
+  Glfw({String? customPath, bool vulkan = false}) {
+    String? path;
     if (customPath != null) {
       path = customPath;
     } else {
@@ -453,20 +455,17 @@ class Glfw {
           .lookup<NativeFunction<TglfwGetRequiredInstanceExtensions_Native>>(
               'glfwGetRequiredInstanceExtensions')
           .asFunction();
-      this.getInstanceProcAddress = dylib
-          .lookup<NativeFunction<TglfwGetInstanceProcAddress_Native>>(
-              'glfwGetInstanceProcAddress')
-          .asFunction();
-      this.getPhysicalDevicePresentationSupport = dylib
-          .lookup<
+      this.getInstanceProcAddress =
+          dylib.lookup<NativeFunction<TglfwGetInstanceProcAddress_Native>>(
+              'glfwGetInstanceProcAddress') as TglfwGetInstanceProcAddress_Func;
+      this.getPhysicalDevicePresentationSupport = dylib.lookup<
                   NativeFunction<
                       TglfwGetPhysicalDevicePresentationSupport_Native>>(
               'glfwGetPhysicalDevicePresentationSupport')
-          .asFunction();
-      this.createWindowSurface = dylib
-          .lookup<NativeFunction<TglfwCreateWindowSurface_Native>>(
-              'glfwCreateWindowSurface')
-          .asFunction();
+          as TglfwGetPhysicalDevicePresentationSupport_Func;
+      this.createWindowSurface =
+          dylib.lookup<NativeFunction<TglfwCreateWindowSurface_Native>>(
+              'glfwCreateWindowSurface') as TglfwCreateWindowSurface_Func;
     }
   }
 }
