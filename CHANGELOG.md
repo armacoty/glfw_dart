@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.0] - 19.11.2021
+
+- Bump `package:ffi` version to `1.1.2`
+- Bump `package:test` version to `1.19.3`
+- Update example.
+
 ## [1.0.0-nullsafety.0] - 20.02.2021
 
 - Make package null safe
